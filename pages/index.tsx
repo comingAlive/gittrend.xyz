@@ -6,7 +6,7 @@ import Header from "../components/header";
 import Skeleton from "../components/skeleton";
 import Star from "../components/star";
 
-const URI_ENDPOINT = "http://localhost:8888/repositories";
+const URI_ENDPOINT = "http://localhost:3000/api/repositories";
 
 export default function IndexPage() {
   // let tempLanguages = [];
