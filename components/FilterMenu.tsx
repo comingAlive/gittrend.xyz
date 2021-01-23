@@ -20,8 +20,10 @@ const FilterMenu = ({ toggleShowFilter }) => {
 
   const selectedCount = languages
     .filter((l) => l.show)
-    .filter((l) => l.selected).length;
-  const totalCount = languages.filter((l) => l.show).length;
+    .filter((l) => l.name.toLowerCase().includes(input) && l.selected).length;
+  const totalCount = languages.filter(
+    (l) => l.name.toLowerCase().includes(input) && l.show
+  ).length;
 
   function handleSelectUnselect() {
     if (totalCount === selectedCount) {
