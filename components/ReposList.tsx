@@ -1,27 +1,28 @@
 import Image from "next/image";
 import Link from "next/link";
-import { memo, useEffect, useState } from "react";
-import Skeleton from "./skeleton";
+import { memo, useState } from "react";
+import useSWR from "swr";
+import { useLanguages } from "../context/LanguagesContext";
+import { fetcher } from "../lib/fetcher";
+import Skeleton from "./Skeleton";
 import Star from "./star";
 
 const ReposList = memo(() => {
   const URI_ENDPOINT = "http://localhost:3001/api/repositories";
   const [period] = useState("daily");
-  // const selectedLanguages = useLanguages()
-  //   .filter((l) => l.selected)
-  //   .map((l) => l.name);
-  const selectedLanguages = ["html"]
-  const [repos, setRepos] = useState<Repo[]>([]);
-  useEffect(() => {
-    fetch(`${URI_ENDPOINT}?languages=${selectedLanguages}&since=${period}`)
-      .then((r) => r.json())
-      .then((r) => {
-        setRepos(r);
-      });
-  }, []);
+  let selectedLanguages = useLanguages()
+    .filter((l) => l.selected)
+    .map((l) => l.name);
+  if (selectedLanguages.length === 60) selectedLanguages = [];
+  // const selectedLanguages = ["starlark"]
+  const { data: repos } = useSWR(
+    `${URI_ENDPOINT}?languages=${selectedLanguages}&since=${period}`,
+    fetcher
+  );
+
   return (
     <ul>
-      {!repos.length ? (
+      {!repos ? (
         <>
           <Skeleton />
           <Skeleton />
@@ -33,7 +34,7 @@ const ReposList = memo(() => {
           return (
             <li
               key={i}
-              className="relative mt-4 bg-white rounded shadow-sm transition-all"
+              className="relative mt-4 bg-white rounded shadow-sm transition-all dark:bg-black"
             >
               <Link href={repo.url}>
                 <a

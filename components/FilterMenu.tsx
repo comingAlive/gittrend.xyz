@@ -8,14 +8,14 @@ const FilterMenu = ({ toggleShowFilter }) => {
   const [category, setCategory] = useState("all");
   const languages = useLanguages();
   const dispatch = useDispatchLanguages();
-  const handleSelect = (id) => dispatch({ type: "SELECT", payload: id });
+  const handleSelect = (name) => dispatch({ type: "SELECT", payload: name });
 
   const [input, setInput] = useState("");
 
   function handleCategory(e: ChangeEvent<HTMLSelectElement>) {
     setCategory(e.target.value);
     dispatch({ type: "SHOW", payload: e.target.value });
-    console.log(e.target.value);
+    setInput("");
   }
 
   const selectedCount = languages
@@ -34,10 +34,10 @@ const FilterMenu = ({ toggleShowFilter }) => {
   }
 
   return (
-    <div className="overflow-hidden fixed top-0 right-0 bottom-0 left-0 z-40 mx-auto max-w-4xl bg-white bg-gray-100 shadow transition box-border">
+    <div className="overflow-hidden fixed top-0 right-0 bottom-0 left-0 z-40 mx-auto max-w-4xl shadow transition box-border">
       <button
         onClick={toggleShowFilter}
-        className="z-10 mt-14 w-full h-12 text-lg font-semibold leading-loose text-white bg-gray-600 border-0 shadow"
+        className="z-10 mt-14 w-full h-12 text-lg font-semibold leading-loose bg-gray-600 dark:bg-gray-800 border-0 text-white shadow"
       >
         Apply filters
       </button>
@@ -46,14 +46,14 @@ const FilterMenu = ({ toggleShowFilter }) => {
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          className="px-6 w-full h-10 shadow box-border"
+          className="px-6 w-full h-10 shadow transition box-border hover:bg-gray-50 dark:bg-black"
           type="text"
           id="search"
           placeholder="Search..."
         />
         <button
           onClick={() => setInput("")}
-          className="w-full text-white bg-gray-800 shadow"
+          className="w-full text-white bg-gray-800 shadow transition hover:bg-black"
         >
           Clear
         </button>
@@ -67,30 +67,29 @@ const FilterMenu = ({ toggleShowFilter }) => {
               <select
                 value={category}
                 onChange={handleCategory}
-                className="px-4 py-1 w-44 h-8 shadow rounder"
-                name="location"
+                className="py-1 px-4 w-44 h-8 bg-white dark:bg-black shadow transition rounder hover:bg-gray-50"
+                name="category"
               >
                 <option value="all">All</option>
                 <option value="web">Web</option>
-                <option value="usa">Data Science</option>
-                <option value="sunnyvale-ca-usa">Embedded computing</option>
-                <option value="austin-tx-usa">Android</option>
-                <option value="san-mateo-ca-usa">iOS</option>
-                <option value="santa-clara-ca-usa">
-                  Santa Clara, CA, USA (1)
-                </option>
-                <option value="switzerland">Switzerland (1)</option>
+                <option value="data">Data Science</option>
+                <option value="front">Front-end</option>
+                <option value="back">Back-end</option>
+                <option value="mobile">Mobile</option>
+                <option value="desktop">Desktop</option>
+                <option value="iot">IoT</option>
+                <option value="system">System Programming</option>
               </select>
             </div>
-            <span
+            <button
               onClick={handleSelectUnselect}
-              className="py-1 px-4 ml-4 bg-white rounded shadow"
+              className="flex py-1 pr-0 pl-4 ml-4 text-left bg-white dark:bg-black rounded border-none shadow transition cursor-pointer hover:bg-gray-50"
             >
-              {selectedCount === totalCount ? "Unselect all" : "Select All"}
+              {selectedCount === totalCount ? "Unselect All" : "Select All"}
               <span className="ml-2 font-medium">
                 {selectedCount}/{totalCount}
               </span>
-            </span>
+            </button>
           </div>
         </div>
         <div className="grid grid-cols-3 mt-4 text-sm text-center">
@@ -103,15 +102,15 @@ const FilterMenu = ({ toggleShowFilter }) => {
             .slice(0, 30)
             .map((l) => {
               return (
-                <div
-                  onClick={() => handleSelect(l.id)}
-                  key={l.id}
-                  className={`cursor-pointer bg-white shadow py-2 h-9 ${
-                    l.selected && "bg-yellow-500 bg-opacity-10"
+                <button
+                  onClick={() => handleSelect(l.name)}
+                  key={l.name}
+                  className={`border-none rounded-none cursor-pointer shadow bg-opacity-20 px-0 py-2 h-9 transition ${
+                    l.selected ? l.color : "bg-white dark:bg-black"
                   }`}
                 >
                   {l.name}
-                </div>
+                </button>
               );
             })}
         </div>

@@ -8,13 +8,14 @@
   },
   "license": "MIT",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.5",
+    "clsx": "^1.1.1",
     "immer": "^8.0.1",
-    "lodash": "^4.17.20",
-    "next": "latest",
+    "next": "^10.0.5",
+    "next-themes": "^0.0.10",
     "preact": "^10.5.11",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "swr": "^0.4.0",
     "use-immer": "^0.4.2"
   },
   "devDependencies": {

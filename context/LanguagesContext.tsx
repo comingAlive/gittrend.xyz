@@ -4,9 +4,9 @@ import { useImmerReducer } from "use-immer";
 
 type Language = {
   name: string;
-  id: number;
   selected: boolean;
   show: boolean;
+  color: string;
   category: string[];
 };
 
@@ -30,7 +30,11 @@ export const LanguagesContextProvider = ({ children }: Props) => {
   ) => {
     switch (a.type) {
       case "SELECT":
-        s[a.payload].selected = !s[a.payload].selected;
+        s.forEach((l, i) => {
+          if (s[i].name === a.payload) {
+            s[i].selected = !s[i].selected;
+          }
+        });
         return s;
       case "SHOW":
         s.forEach((l, i) => {
@@ -47,13 +51,6 @@ export const LanguagesContextProvider = ({ children }: Props) => {
           s[i].selected = l.category.includes(a.payload);
         });
         return s;
-      // case "SELECT":
-      //   return s.map((v) => {
-      //     if (v.id === a.payload) {
-      //       return {...v, selected: !v.selected}
-      //     }
-      //     return v;
-      //   });
       default:
         throw new Error(`Unknown action: ${a.type}`);
     }
@@ -63,145 +60,441 @@ export const LanguagesContextProvider = ({ children }: Props) => {
     // const [state, dispatch] = useReducer(languagesReducer, [
     {
       name: "JavaScript",
-      id: 0,
       selected: false,
       show: true,
-      category: ["all", "web"],
+      color: "bg-amber-300",
+      category: [
+        "all",
+        "front",
+        "game",
+        "web",
+        "iot",
+        "data",
+        "mobile",
+        "desktop",
+        "back",
+      ],
     },
-    { name: "Python", id: 1, selected: false, show: true, category: ["all"] },
-    { name: "Java", id: 2, selected: false, show: true, category: ["all"] },
-    { name: "Go", id: 3, selected: false, show: true, category: ["all"] },
-    { name: "C++", id: 4, selected: false, show: true, category: ["all"] },
-    { name: "Ruby", id: 5, selected: false, show: true, category: ["all"] },
+    {
+      name: "Python",
+      selected: false,
+      show: true,
+      color: "bg-cyan-700",
+      category: ["all", "back", "web", "data", "desktop", "iot"],
+    },
+    {
+      name: "Go",
+      selected: false,
+      show: true,
+      color: "bg-cyan-500",
+      category: ["all", "back", "desktop", "web", "system", "iot"],
+    },
+    {
+      name: "Java",
+      selected: false,
+      show: true,
+      color: "bg-yellow-700",
+      category: ["all", "mobile", "iot", "data", "desktop"],
+    },
+
+    {
+      name: "C++",
+      selected: false,
+      show: true,
+      color: "bg-pink-500",
+      category: ["all", "system", "game", "iot", "data", "desktop"],
+    },
     {
       name: "TypeScript",
-      id: 6,
       selected: false,
       show: true,
-      category: ["all"],
+      color: "bg-cyan-700",
+      category: ["all", "game", "web", "desktop", "front", "back", "mobile"],
     },
-    { name: "PHP", id: 7, selected: false, show: true, category: ["all"] },
-    { name: "C#", id: 8, selected: false, show: true, category: ["all"] },
-    { name: "C", id: 9, selected: false, show: true, category: ["all"] },
-    { name: "Scala", id: 10, selected: false, show: true, category: ["all"] },
-    { name: "Shell", id: 11, selected: false, show: true, category: ["all"] },
-    { name: "Dart", id: 12, selected: false, show: true, category: ["all"] },
-    { name: "Rust", id: 13, selected: false, show: true, category: ["all"] },
-    { name: "Kotlin", id: 14, selected: false, show: true, category: ["all"] },
-    { name: "Swift", id: 15, selected: false, show: true, category: ["all"] },
-    { name: "Groovy", id: 16, selected: false, show: true, category: ["all"] },
     {
-      name: "Objective-C",
-      id: 17,
+      name: "C",
       selected: false,
       show: true,
-      category: ["all"],
+      color: "bg-trueGray-600",
+      category: ["all", "iot", "system", "desktop"],
     },
-    { name: "Elixir", id: 18, selected: false, show: true, category: ["all"] },
-    { name: "DM", id: 19, selected: false, show: true, category: ["all"] },
-    { name: "Perl", id: 20, selected: false, show: true, category: ["all"] },
     {
-      name: "CoffeeScript",
-      id: 21,
+      name: "PHP",
       selected: false,
       show: true,
-      category: ["all"],
+      color: "bg-blueGray-500",
+      category: ["all", "web", "iot"],
     },
-    { name: "Lua", id: 22, selected: false, show: true, category: ["all"] },
     {
-      name: "PowerShell",
-      id: 23,
+      name: "C#",
       selected: false,
       show: true,
-      category: ["all"],
+      color: "bg-lime-800",
+      category: ["all", "system", "game", "iot", "desktop"],
     },
-    { name: "Clojure", id: 24, selected: false, show: true, category: ["all"] },
-    { name: "TSQL", id: 25, selected: false, show: true, category: ["all"] },
-    { name: "OCaml", id: 26, selected: false, show: true, category: ["all"] },
     {
-      name: "Vim script",
-      id: 27,
+      name: "Shell",
       selected: false,
       show: true,
-      category: ["all"],
+      color: "bg-lime-400",
+      category: ["all", "back", "data"],
     },
-    { name: "Haskell", id: 28, selected: false, show: true, category: ["all"] },
     {
-      name: "Emacs Lisp",
-      id: 29,
+      name: "Ruby",
       selected: false,
       show: true,
-      category: ["all"],
+      color: "bg-red-900",
+      category: ["all", "back", "web", "iot"],
     },
-    { name: "Erlang", id: 30, selected: false, show: true, category: ["all"] },
-    { name: "Jsonnet", id: 31, selected: false, show: true, category: ["all"] },
-    { name: "R", id: 32, selected: false, show: true, category: ["all"] },
-    { name: "Coq", id: 33, selected: false, show: true, category: ["all"] },
-    { name: "Julia", id: 34, selected: false, show: true, category: ["all"] },
-    { name: "MATLAB", id: 35, selected: false, show: true, category: ["all"] },
-    { name: "Roff", id: 36, selected: false, show: true, category: ["all"] },
     {
-      name: "PureScript",
-      id: 37,
+      name: "Swift",
       selected: false,
       show: true,
-      category: ["all"],
+      color: "bg-orange-400",
+      category: ["all", "mobile", "iot", "system"],
     },
-    { name: "Puppet", id: 38, selected: false, show: true, category: ["all"] },
-    {
-      name: "WebAssembly",
-      id: 39,
-      selected: false,
-      show: true,
-      category: ["all"],
-    },
-    { name: "Fortran", id: 40, selected: false, show: true, category: ["all"] },
-    {
-      name: "SystemVerilog",
-      id: 41,
-      selected: false,
-      show: true,
-      category: ["all"],
-    },
-    { name: "F#", id: 42, selected: false, show: true, category: ["all"] },
-    {
-      name: "Visual Basic .NET",
-      id: 43,
-      selected: false,
-      show: true,
-      category: ["all"],
-    },
-    { name: "Elm", id: 44, selected: false, show: true, category: ["all"] },
-    {
-      name: "Objective-C++",
-      id: 45,
-      selected: false,
-      show: true,
-      category: ["all"],
-    },
-    { name: "Vala", id: 46, selected: false, show: true, category: ["all"] },
-    { name: "Verilog", id: 47, selected: false, show: true, category: ["all"] },
-    {
-      name: "Smalltalk",
-      id: 48,
-      selected: false,
-      show: true,
-      category: ["all"],
-    },
-    { name: "Crystal", id: 49, selected: false, show: true, category: ["all"] },
+
     {
       name: "HTML",
-      id: 50,
       selected: false,
       show: true,
-      category: ["all", "web"],
+      color: "bg-orange-600",
+      category: ["all", "front", "mobile", "game", "web"],
+    },
+    {
+      name: "Jupyter Notebook",
+      selected: false,
+      show: true,
+      color: "bg-orange-600",
+      category: ["all", "data"],
+    },
+    {
+      name: "Rust",
+      selected: false,
+      show: true,
+      color: "bg-orange-300",
+      category: ["all", "desktop", "system", "iot"],
+    },
+    {
+      name: "Objective-C",
+      selected: false,
+      show: true,
+      color: "bg-blue-500",
+      category: ["all", "mobile"],
     },
     {
       name: "CSS",
-      id: 51,
       selected: false,
       show: true,
-      category: ["all", "web"],
+      color: "bg-blueGray-600",
+      category: ["all", "front", "game", "web"],
+    },
+    {
+      name: "Kotlin",
+      selected: false,
+      show: true,
+      color: "bg-orange-400",
+      category: ["all", "mobile"],
+    },
+    {
+      name: "Dart",
+      selected: false,
+      show: true,
+      color: "bg-teal-500",
+      category: ["all", "mobile"],
+    },
+    {
+      name: "Vue",
+      selected: false,
+      show: true,
+      color: "bg-blueGray-700",
+      category: ["all", "web", "front"],
+    },
+    {
+      name: "Vim script",
+      selected: false,
+      show: true,
+      color: "bg-green-600",
+      category: ["all"],
+    },
+    {
+      name: "Scala",
+      selected: false,
+      show: true,
+      color: "bg-rose-700",
+      category: ["all", "back", "desktop", "data"],
+    },
+
+    {
+      name: "Lua",
+      selected: false,
+      show: true,
+      color: "bg-blue-900",
+      category: ["all", "game", "iot"],
+    },
+    {
+      name: "PowerShell",
+      selected: false,
+      show: true,
+      color: "bg-blueGray-800",
+      category: ["all"],
+    },
+    {
+      name: "Emacs Lisp",
+      selected: false,
+      show: true,
+      color: "bg-purple-500",
+      category: ["all"],
+    },
+    {
+      name: "Perl",
+      selected: false,
+      show: true,
+      color: "bg-cyan-600",
+      category: ["all"],
+    },
+    {
+      name: "CoffeeScript",
+      selected: false,
+      show: true,
+      color: "bg-blue-900",
+      category: ["all"],
+    },
+    {
+      name: "Haskell",
+      selected: false,
+      show: true,
+      color: "bg-blueGray-500",
+      category: ["all"],
+    },
+    {
+      name: "TeX",
+      selected: false,
+      show: true,
+      color: "bg-lime-800",
+      category: ["all"],
+    },
+    {
+      name: "Elixir",
+      selected: false,
+      show: true,
+      color: "bg-gray-500",
+      category: ["all"],
+    },
+    {
+      name: "Dockerfile",
+      selected: false,
+      show: true,
+      color: "bg-trueGray-400",
+      category: ["all"],
+    },
+    {
+      name: "Clojure",
+      selected: false,
+      show: true,
+      color: "bg-trueGray-400",
+      category: ["all"],
+    },
+    {
+      name: "OCaml",
+      selected: false,
+      show: true,
+      color: "bg-trueGray-400",
+      category: ["all"],
+    },
+    {
+      name: "Groovy",
+      selected: false,
+      show: true,
+      color: "bg-trueGray-400",
+      category: ["all"],
+    },
+    {
+      name: "MATLAB",
+      selected: false,
+      show: true,
+      color: "bg-trueGray-400",
+      category: ["all"],
+    },
+    {
+      name: "Makefile",
+      selected: false,
+      show: true,
+      color: "bg-trueGray-400",
+      category: ["all"],
+    },
+    {
+      name: "R",
+      selected: false,
+      show: true,
+      color: "bg-lightBlue-500",
+      category: ["all", "data", "iot", "desktop"],
+    },
+    {
+      name: "Erlang",
+      selected: false,
+      show: true,
+      color: "bg-trueGray-400",
+      category: ["all"],
+    },
+    {
+      name: "CMake",
+      selected: false,
+      show: true,
+      color: "bg-trueGray-400",
+      category: ["all"],
+    },
+    {
+      name: "Starlark",
+      selected: false,
+      show: true,
+      color: "bg-trueGray-400",
+      category: ["all"],
+    },
+    {
+      name: "Paskal",
+      selected: false,
+      show: true,
+      color: "bg-trueGray-400",
+      category: ["all"],
+    },
+
+    {
+      name: "Common Lisp",
+      selected: false,
+      show: true,
+      color: "bg-trueGray-400",
+      category: ["all"],
+    },
+    {
+      name: "Vala",
+      selected: false,
+      show: true,
+      color: "bg-trueGray-400",
+      category: ["all"],
+    },
+    {
+      name: "Assembly",
+      selected: false,
+      show: true,
+      color: "bg-trueGray-400",
+      category: ["all"],
+    },
+
+    {
+      name: "TSQL",
+      selected: false,
+      show: true,
+      color: "bg-trueGray-400",
+      category: ["all"],
+    },
+
+    {
+      name: "Jsonnet",
+      selected: false,
+      show: true,
+      color: "bg-trueGray-400",
+      category: ["all"],
+    },
+
+    {
+      name: "Julia",
+      selected: false,
+      show: true,
+      color: "bg-gray-400",
+      category: ["all", "data"],
+    },
+    {
+      name: "F#",
+      selected: false,
+      show: true,
+      color: "bg-trueGray-400",
+      category: ["all"],
+    },
+    {
+      name: "Verilog",
+      selected: false,
+      show: true,
+      color: "bg-trueGray-400",
+      category: ["all"],
+    },
+    {
+      name: "Nim",
+      selected: false,
+      show: true,
+      color: "bg-trueGray-400",
+      category: ["all"],
+    },
+    {
+      name: "Puppet",
+      selected: false,
+      show: true,
+      color: "bg-trueGray-400",
+      category: ["all"],
+    },
+    {
+      name: "WebAssembly",
+      selected: false,
+      show: true,
+      color: "bg-trueGray-400",
+      category: ["all"],
+    },
+    {
+      name: "Fortran",
+      selected: false,
+      show: true,
+      color: "bg-trueGray-400",
+      category: ["all"],
+    },
+    {
+      name: "SystemVerilog",
+      selected: false,
+      show: true,
+      color: "bg-trueGray-400",
+      category: ["all"],
+    },
+    {
+      name: "Visual Basic .NET",
+      selected: false,
+      show: true,
+      color: "bg-trueGray-400",
+      category: ["all"],
+    },
+    {
+      name: "Elm",
+      selected: false,
+      show: true,
+      color: "bg-trueGray-400",
+      category: ["all"],
+    },
+    {
+      name: "Objective-C++",
+      selected: false,
+      show: true,
+      color: "bg-trueGray-400",
+      category: ["all"],
+    },
+
+    {
+      name: "Smalltalk",
+      selected: false,
+      show: true,
+      color: "bg-trueGray-400",
+      category: ["all"],
+    },
+    {
+      name: "Markdown",
+      selected: false,
+      show: true,
+      color: "bg-trueGray-400",
+      category: ["all"],
+    },
+    {
+      name: "Crystal",
+      selected: false,
+      show: true,
+      color: "bg-trueGray-400",
+      category: ["all"],
     },
   ]);
 
