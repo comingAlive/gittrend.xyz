@@ -1,6 +1,6 @@
 import {useState} from "react";
 import FilterMenu from "../components/FilterMenu";
-import Header from "../components/header";
+import Header from "../components/Header";
 import ReposList from "../components/ReposList";
 
 const IndexPage = () => {

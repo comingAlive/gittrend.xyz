@@ -7,16 +7,13 @@ import Star from "./star";
 const ReposList = memo(() => {
   const URI_ENDPOINT = "http://localhost:3001/api/repositories";
   const [period] = useState("daily");
-  const [selectedLangs] = useState([
-    "javascript",
-    "rust",
-    "typescript",
-    "python",
-    "go",
-  ]);
+  // const selectedLanguages = useLanguages()
+  //   .filter((l) => l.selected)
+  //   .map((l) => l.name);
+  const selectedLanguages = ["html"]
   const [repos, setRepos] = useState<Repo[]>([]);
   useEffect(() => {
-    fetch(`${URI_ENDPOINT}?languages=${selectedLangs}&since=${period}`)
+    fetch(`${URI_ENDPOINT}?languages=${selectedLanguages}&since=${period}`)
       .then((r) => r.json())
       .then((r) => {
         setRepos(r);
