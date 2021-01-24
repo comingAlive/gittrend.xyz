@@ -1,5 +1,5 @@
-  <a href="https://svelte.dev">
-	<img alt="Cybernetically enhanced web apps: Svelte" src="https://gitexplore.xyz/images/banner.png">
+  <a href="https://gitexplore.xyz">
+	<img alt="Cybernetically enhanced web apps: Svelte" src="https://gitexplore.xyz/images/repo.png">
   </a>
 
 # Git Explore - Trending repos.
