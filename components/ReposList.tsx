@@ -10,7 +10,7 @@ import StarIcon from "./StarIcon";
 
 const ReposList = memo(() => {
   const URI_ENDPOINT =
-    "https://affectionate-mayer-f7619d.netlify.app/.netlify/functions/next_api_repositories";
+    "https://gitexplore.netlify.app/.netlify/functions/next_api_repositories";
   const [period] = useState("daily");
   let selectedLanguages = useLanguages()
     .filter((l) => l.selected)
