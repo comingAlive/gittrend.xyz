@@ -1,3 +1,7 @@
+  <a href="https://svelte.dev">
+	<img alt="Cybernetically enhanced web apps: Svelte" src="https://gitexplore.xyz/images/banner.png">
+  </a>
+
 # Git Explore - Trending repos.
 
 A web application for monitoring top trends of GitHub open source. Supports programming language filtering.
