@@ -9,6 +9,7 @@ import Skeleton from "./Skeleton";
 import StarIcon from "./StarIcon";
 
 const ReposList = memo(() => {
+  // const URI_ENDPOINT = "http://localhost:3001/api/repositories";
   const URI_ENDPOINT =
     "https://gitexplore.netlify.app/.netlify/functions/next_api_repositories";
   const [period] = useState("daily");
@@ -24,7 +25,7 @@ const ReposList = memo(() => {
 
   return (
     <section>
-      <ul>
+      <ul className="grid-cols-2 gap-2 md:grid">
         {!repos ? (
           <>
             <Skeleton />
@@ -39,14 +40,14 @@ const ReposList = memo(() => {
             return (
               <li
                 key={i}
-                className="relative mt-4 bg-white rounded shadow-sm transition-all dark:bg-black"
+                className="relative z-0 mt-4 bg-white rounded border border-l-8 border-gray-600 shadow-sm shadow transition-all transition transform cursor-pointer hover:scale-95 hover:z-50 md:mt-2 dark:bg-black"
+                style={{ borderColor: repo.languageColor }}
               >
                 <Link href={repo.url}>
                   <a
                     rel="noopener noreferrer nofollow"
                     target="_blank"
-                    className="block py-5 px-4 pl-16 rounded border-l-8 border-gray-600 cursor-pointer"
-                    style={{ borderColor: repo.languageColor }}
+                    className="block py-5 px-4 pl-16"
                   >
                     <div>
                       <div className="absolute left-5 p-1 w-9 h-9 leading-6 rounded shadow-sm box-border">
@@ -57,15 +58,15 @@ const ReposList = memo(() => {
                           alt={repo.name + " logo"}
                         />
                       </div>
-                      <span className="text-xs md:text-base">author: </span>
-                      <span className="text-sm font-medium leading-normal md:text-lg">
+                      <span className="text-xs">author: </span>
+                      <span className="text-xs font-medium leading-normal">
                         {repo.author}
                       </span>
-                      <span className="block mt-1 mr-10 font-bold leading-normal md:text-lg">
+                      <span className="block mt-1 mr-10 text-lg font-bold leading-normal md:text-xl">
                         {repo.name}
                       </span>
                     </div>
-                    <div className="mt-2 mr-8 text-sm md:text-base">
+                    <div className="mt-2 mr-8">
                       <span>{repo.description}</span>
                       <div className="absolute right-4 top-5 font-semibold text-right md:text-lg">
                         <div>{repo.language}</div>
