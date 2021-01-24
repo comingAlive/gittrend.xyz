@@ -28,15 +28,13 @@ const FilterMenu = ({ toggleShowFilter }) => {
   function handleSelectUnselect() {
     if (selectedCount === 0) {
       dispatch({ type: "SELECT_ALL", payload: category });
-
     } else {
       dispatch({ type: "UNSELECT_ALL", payload: category });
-
     }
   }
 
   return (
-    <div className="overflow-hidden fixed top-0 right-0 bottom-0 left-0 z-40 mx-auto max-w-4xl shadow transition md:text-lg box-border">
+    <section className="overflow-hidden fixed top-0 right-0 bottom-0 left-0 z-40 mx-auto max-w-4xl shadow transition md:text-lg box-border">
       <button
         onClick={toggleShowFilter}
         className="z-10 mt-14 w-full h-12 text-lg font-semibold leading-loose text-white bg-gray-600 border-0 shadow md:text-xl dark:bg-gray-800"
@@ -106,8 +104,10 @@ const FilterMenu = ({ toggleShowFilter }) => {
                 <button
                   onClick={() => handleSelect(l.name)}
                   key={l.name}
-                  className={`border-none rounded-none cursor-pointer shadow bg-opacity-20 px-0 py-2 h-10 transition ${
-                    l.selected ? l.color+" font-semibold" : "bg-white dark:bg-black"
+                  className={`border-none rounded-none cursor-pointer shadow bg-opacity-40 px-0 py-2 h-10 transition ${
+                    l.selected
+                      ? l.color + " font-semibold"
+                      : "bg-white dark:bg-black"
                   }`}
                 >
                   {l.name}
@@ -116,7 +116,7 @@ const FilterMenu = ({ toggleShowFilter }) => {
             })}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 export default FilterMenu;

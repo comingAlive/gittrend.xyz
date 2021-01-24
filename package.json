@@ -8,7 +8,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "clsx": "^1.1.1",
     "immer": "^8.0.1",
     "next": "^10.0.5",
     "next-themes": "^0.0.10",

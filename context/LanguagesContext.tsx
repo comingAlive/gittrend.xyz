@@ -94,7 +94,7 @@ export const LanguagesContextProvider = ({ children }: Props) => {
       selected: false,
       show: true,
       color: "bg-yellow-700",
-      category: ["all", "mobile", "iot", "data", "desktop"],
+      category: ["all", "back", "mobile", "iot", "data", "desktop"],
     },
 
     {
@@ -123,14 +123,14 @@ export const LanguagesContextProvider = ({ children }: Props) => {
       selected: false,
       show: true,
       color: "bg-blueGray-500",
-      category: ["all", "web", "iot"],
+      category: ["all","back","java", "web", "iot"],
     },
     {
       name: "C#",
       selected: false,
       show: true,
       color: "bg-lime-800",
-      category: ["all", "system", "game", "iot", "desktop"],
+      category: ["all", "back","system", "game", "iot", "desktop"],
     },
     {
       name: "Shell",

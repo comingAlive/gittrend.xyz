@@ -1,4 +1,6 @@
-const Skeleton = () => {
+import { memo } from "react";
+
+const Skeleton = memo(() => {
   return (
     <div
       className="flex space-x-3 p-5 bg-white dark:bg-black border-l-8 rounded border-gray-500 mt-4"
@@ -17,5 +19,5 @@ const Skeleton = () => {
       </div>
     </div>
   );
-};
+});
 export default Skeleton;
