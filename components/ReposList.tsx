@@ -9,7 +9,8 @@ import Skeleton from "./Skeleton";
 import StarIcon from "./StarIcon";
 
 const ReposList = memo(() => {
-  const URI_ENDPOINT = "https://affectionate-mayer-f7619d.netlify.app/.netlify/functions/next_api_repositories";
+  const URI_ENDPOINT =
+    "https://affectionate-mayer-f7619d.netlify.app/.netlify/functions/next_api_repositories";
   const [period] = useState("daily");
   let selectedLanguages = useLanguages()
     .filter((l) => l.selected)
@@ -40,6 +41,7 @@ const ReposList = memo(() => {
               >
                 <Link href={repo.url}>
                   <a
+                    rel="noopener noreferrer nofollow"
                     target="_blank"
                     className="block py-5 px-4 pl-16 rounded border-l-8 border-gray-600 cursor-pointer"
                     style={{ borderColor: repo.languageColor }}
