@@ -31,6 +31,8 @@ const ReposList = memo(() => {
             <Skeleton />
             <Skeleton />
             <Skeleton />
+            <Skeleton />
+            <Skeleton />
           </>
         ) : (
           repos.map((repo, i) => {
