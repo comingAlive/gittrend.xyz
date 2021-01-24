@@ -17,7 +17,7 @@ const IndexPage = () => {
       <main>
         <button
           onClick={toggleShowFilter}
-          className="z-10 mt-14 w-full h-12 text-lg font-semibold leading-loose text-white bg-gray-600 dark:bg-gray-800 border-0"
+          className="z-10 mt-14 w-full md:text-xl h-12 text-lg font-semibold leading-loose text-white bg-gray-600 dark:bg-gray-800 border-0"
         >
           Filter
         </button>

@@ -26,18 +26,20 @@ const FilterMenu = ({ toggleShowFilter }) => {
   ).length;
 
   function handleSelectUnselect() {
-    if (totalCount === selectedCount) {
-      dispatch({ type: "UNSELECT_ALL", payload: category });
-    } else {
+    if (selectedCount === 0) {
       dispatch({ type: "SELECT_ALL", payload: category });
+
+    } else {
+      dispatch({ type: "UNSELECT_ALL", payload: category });
+
     }
   }
 
   return (
-    <div className="overflow-hidden fixed top-0 right-0 bottom-0 left-0 z-40 mx-auto max-w-4xl shadow transition box-border">
+    <div className="overflow-hidden fixed top-0 right-0 bottom-0 left-0 z-40 mx-auto max-w-4xl shadow transition md:text-lg box-border">
       <button
         onClick={toggleShowFilter}
-        className="z-10 mt-14 w-full h-12 text-lg font-semibold leading-loose bg-gray-600 dark:bg-gray-800 border-0 text-white shadow"
+        className="z-10 mt-14 w-full h-12 text-lg font-semibold leading-loose text-white bg-gray-600 border-0 shadow md:text-xl dark:bg-gray-800"
       >
         Apply filters
       </button>
@@ -53,21 +55,20 @@ const FilterMenu = ({ toggleShowFilter }) => {
         />
         <button
           onClick={() => setInput("")}
-          className="w-full text-white bg-gray-800 shadow transition hover:bg-black"
+          className="w-full text-white bg-gray-800 shadow transition md:text-xl hover:bg-black"
         >
           Clear
         </button>
       </div>
-      <div className="mt-2">
+      <div className="mt-2 h-full">
         <div>
-          <p className="ml-4">Categories</p>
-
+          <p className="mb-1 ml-2">Categories</p>
           <div className="grid grid-cols-2">
             <div>
               <select
                 value={category}
                 onChange={handleCategory}
-                className="py-1 px-4 w-44 h-8 bg-white dark:bg-black shadow transition rounder hover:bg-gray-50"
+                className="px-4 w-44 h-8 bg-white rounded shadow transition dark:bg-black rounder hover:bg-gray-50"
                 name="category"
               >
                 <option value="all">All</option>
@@ -83,16 +84,16 @@ const FilterMenu = ({ toggleShowFilter }) => {
             </div>
             <button
               onClick={handleSelectUnselect}
-              className="flex py-1 pr-0 pl-4 ml-4 text-left bg-white dark:bg-black rounded border-none shadow transition cursor-pointer hover:bg-gray-50"
+              className="flex items-center py-0 pr-0 pl-4 ml-4 text-left bg-white rounded border-none shadow transition cursor-pointer dark:bg-black hover:bg-gray-50"
             >
-              {selectedCount === totalCount ? "Unselect All" : "Select All"}
+              {selectedCount === 0 ? "Select All" : "Unselect All"}
               <span className="ml-2 font-medium">
                 {selectedCount}/{totalCount}
               </span>
             </button>
           </div>
         </div>
-        <div className="grid grid-cols-3 mt-4 text-sm text-center">
+        <div className="grid grid-cols-3 mt-1 h-auto md:mt-4 text-sm text-center md:text-xl">
           {languages
             .filter((l) => {
               return (
@@ -105,8 +106,8 @@ const FilterMenu = ({ toggleShowFilter }) => {
                 <button
                   onClick={() => handleSelect(l.name)}
                   key={l.name}
-                  className={`border-none rounded-none cursor-pointer shadow bg-opacity-20 px-0 py-2 h-9 transition ${
-                    l.selected ? l.color : "bg-white dark:bg-black"
+                  className={`border-none rounded-none cursor-pointer shadow bg-opacity-20 px-0 py-2 h-10 transition ${
+                    l.selected ? l.color+" font-semibold" : "bg-white dark:bg-black"
                   }`}
                 >
                   {l.name}

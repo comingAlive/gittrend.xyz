@@ -1,4 +1,4 @@
-const Star = ({ w = 10, h = 10 }) => {
+const StarIcon = ({ w = 10, h = 10 }) => {
   return (
     <svg
       className="mx-1"
@@ -18,4 +18,4 @@ const Star = ({ w = 10, h = 10 }) => {
     </svg>
   );
 };
-export default Star;
+export default StarIcon;

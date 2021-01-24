@@ -1,7 +1,7 @@
 const Skeleton = () => {
   return (
     <div
-      className="flex space-x-3 p-5 bg-white dark:bg-black border-l-4 border-gray-500 mt-4"
+      className="flex space-x-3 p-5 bg-white dark:bg-black border-l-8 rounded border-gray-500 mt-4"
       aria-live="assertive"
       aria-atomic="true"
     >
