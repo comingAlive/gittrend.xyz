@@ -3,9 +3,10 @@ import {
   useDispatchLanguages,
   useLanguages,
 } from "../context/LanguagesContext";
+import useLocalStorage from "../lib/useLocalStorage";
 
 const FilterMenu = ({ toggleShowFilter }) => {
-  const [category, setCategory] = useState("all");
+  const [category, setCategory] = useLocalStorage('category', 'all');
   const languages = useLanguages();
   const dispatch = useDispatchLanguages();
   const handleSelect = (name) => dispatch({ type: "SELECT", payload: name });
