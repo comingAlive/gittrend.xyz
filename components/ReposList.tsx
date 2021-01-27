@@ -1,12 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { memo } from "react";
+import { isMobile } from "react-device-detect";
 import useSWR from "swr";
 import { useLanguages } from "../context/LanguagesContext";
 import { fetcher } from "../lib/fetcher";
 import Footer from "./Footer";
-import Skeleton from "./Skeleton";
 import StarIcon from "./StarIcon";
+import Skeleton from "./Skeleton";
 
 type Props = {
   period: string;
@@ -28,12 +29,9 @@ const ReposList = memo(({ period }: Props) => {
       <ul className="grid-cols-2 gap-2 md:grid">
         {!repos ? (
           <>
-            <Skeleton />
-            <Skeleton />
-            <Skeleton />
-            <Skeleton />
-            <Skeleton />
-            <Skeleton />
+            {Array.from({ length: isMobile ? 4 : 20 }, (_, i) => (
+              <Skeleton key={i} />
+            ))}
           </>
         ) : (
           repos.map((repo, i) => {
