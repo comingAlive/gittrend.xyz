@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { memo, useState } from "react";
+import { memo } from "react";
 import useSWR from "swr";
 import { useLanguages } from "../context/LanguagesContext";
 import { fetcher } from "../lib/fetcher";
@@ -8,18 +8,18 @@ import Footer from "./Footer";
 import Skeleton from "./Skeleton";
 import StarIcon from "./StarIcon";
 
-const ReposList = memo(() => {
-  // const URI_ENDPOINT = "http://localhost:3001/api/repositories";
-  const URI_ENDPOINT =
-    "https://gitexplore.netlify.app/.netlify/functions/next_api_repositories";
-  const [period] = useState("daily");
+type Props = {
+  period: string;
+};
+
+const ReposList = memo(({ period }: Props) => {
   let selectedLanguages = useLanguages()
     .filter((l) => l.selected)
     .map((l) => l.name);
   if (selectedLanguages.length === 60) selectedLanguages = [];
 
   const { data: repos } = useSWR(
-    `${URI_ENDPOINT}?languages=${selectedLanguages}&since=${period}`,
+    `${process.env.NEXT_PUBLIC_API_ENDPOINT}?languages=${selectedLanguages}&since=${period}`,
     fetcher
   );
 
