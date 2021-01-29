@@ -1,7 +1,7 @@
 {
   "name": "Git Explore - Trending repos.",
   "short_name": "GitExplore",
-  "description": "A web application for monitoring top trends of GitHub open source. Supports programming language filtering.",
+  "description": "A web application for monitoring top trends of GitHub open source. Supports programming language multi-filtering.",
   "background_color": "#000",
   "display": "standalone",
   "start_url": "/",

@@ -4,7 +4,7 @@
 
 # Git Explore - Trending repos.
 
-A web application for monitoring top trends of GitHub open source. Supports programming language filtering.
+A web application for monitoring top trends of GitHub open source. Supports programming language multi-filtering.
 
 ## Specification
 

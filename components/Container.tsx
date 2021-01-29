@@ -8,7 +8,7 @@ export default function Container(props) {
   const meta = {
     title: "GitExplore - Trending repos.",
     description:
-      "A web application for monitoring top trends of GitHub open source. Supports programming language filtering.",
+      "A web application for monitoring top trends of GitHub open source. Supports programming language multi-filtering.",
     image: "https://gitexplore.xyz/images/banner.png",
     type: "website",
     ...customMeta,
