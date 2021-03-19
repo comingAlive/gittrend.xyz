@@ -8,7 +8,7 @@ const ColorModeButton = memo(() => {
     <button
       aria-label="Toggle Dark Mode"
       type="button"
-      className="absolute top-1 right-1 p-3 w-10 h-10 bg-gray-200 rounded border-0 dark:bg-gray-800"
+      className="absolute top-1 right-1 p-3 w-10 h-10 bg-gray-200 rounded border-0 transition hover:bg-gray-300 dark:hover:bg-gray-700 active:bg-gray-400 dark:bg-gray-800"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
     >
       <svg

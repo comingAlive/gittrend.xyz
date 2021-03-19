@@ -6,8 +6,8 @@ import useSWR from "swr";
 import { useLanguages } from "../context/LanguagesContext";
 import { fetcher } from "../lib/fetcher";
 import Footer from "./Footer";
-import StarIcon from "./StarIcon";
 import Skeleton from "./Skeleton";
+import StarIcon from "./StarIcon";
 
 type Props = {
   period: string;
@@ -19,7 +19,7 @@ const ReposList = memo(({ period }: Props) => {
     .map((l) => l.name);
   if (selectedLanguages.length === 60) selectedLanguages = [];
 
-  const { data: repos } = useSWR(
+  const { data: repos } = useSWR<Repo[]>(
     `${process.env.NEXT_PUBLIC_API_ENDPOINT}?languages=${selectedLanguages}&since=${period}`,
     fetcher
   );
@@ -38,7 +38,7 @@ const ReposList = memo(({ period }: Props) => {
             return (
               <li
                 key={i}
-                className="relative z-0 mt-4 bg-white rounded border border-l-8 border-gray-600 shadow-sm shadow transition-all transition transform cursor-pointer hover:scale-95 hover:z-50 md:mt-2 dark:bg-black"
+                className="relative z-0 mt-4 bg-white rounded-sm border border-l-8 border-gray-600 shadow-sm  transition-all transition transform cursor-pointer hover:scale-95 hover:z-50 md:mt-2 dark:bg-black"
                 style={{ borderColor: repo.languageColor }}
               >
                 <Link href={repo.url}>

@@ -46,38 +46,38 @@ const FilterMenu = memo(({ toggleShowFilter }: Props) => {
   }
 
   return (
-    <section className="overflow-hidden fixed top-0 right-0 bottom-0 left-0 z-40 mx-auto max-w-4xl shadow transition md:text-lg box-border">
+    <section className="fixed top-0 right-0 bottom-0 left-0 z-40 mx-auto max-w-4xl transition md:text-lg">
       <button
         onClick={() => toggleShowFilter(period)}
-        className="z-10 mt-14 w-full h-12 text-lg font-semibold leading-loose text-white bg-gray-600 border-0 shadow md:text-xl dark:bg-gray-800"
+        className="block z-10 py-2 px-8 mt-14 ml-auto w-full text-xl font-semibold text-gray-800 bg-gray-200 rounded transition md:w-auto dark:text-gray-200 hover:bg-gray-300 md:text-2xl dark:bg-gray-800"
       >
         Apply filters
       </button>
-      <div className="mt-4">
+      <div className="">
         <label htmlFor="search" />
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          className="px-6 w-full h-10 shadow transition box-border hover:bg-gray-50 dark:bg-black"
+          className="px-6 mt-4 w-full h-16 text-xl shadow-inner transition box-border  dark:bg-black"
           type="text"
           id="search"
           placeholder="Search..."
         />
         <button
           onClick={() => setInput("")}
-          className="w-full text-white bg-gray-800 shadow transition md:text-xl hover:bg-black"
+          className="block z-10 py-2 px-8 mt-4 ml-auto w-full text-xl font-semibold text-gray-800 bg-gray-200 rounded shadow-sm transition md:w-auto dark:text-gray-200 hover:bg-gray-300 md:text-2xl dark:bg-gray-800"
         >
-          Clear
+          Clear Input
         </button>
       </div>
-      <div className="mt-2 h-full">
+      <div className="mt-4 h-full">
         <div>
-          <div className="flex justify-between">
-            <p className="mb-1 ml-2">Categories</p>
+          <div className="flex justify-between items-baseline">
+            <p className="mb-1 ml-2 text-2xl font-medium">Categories</p>
             <select
               value={period}
               onChange={handlePeriod}
-              className="px-2 h-8 bg-white rounded border shadow transition dark:bg-black rounder hover:bg-gray-50"
+              className="px-2 pr-12 mb-1 text-xl bg-white rounded-sm border-none shadow-sm transition dark:bg-black"
               name="category"
             >
               <option value="daily">Daily</option>
@@ -85,12 +85,12 @@ const FilterMenu = memo(({ toggleShowFilter }: Props) => {
               <option value="monthly">Monthly</option>
             </select>
           </div>
-          <div className="grid grid-cols-2">
-            <div>
+          <div className="grid grid-cols-12">
+            <div className="col-span-3">
               <select
                 value={category}
                 onChange={handleCategory}
-                className="px-4 w-44 h-8 bg-white rounded border shadow transition dark:bg-black rounder hover:bg-gray-50"
+                className="px-4 w-40 text-xl bg-white rounded-sm border-none shadow-sm transition dark:bg-black"
                 name="category"
               >
                 <option value="all">All</option>
@@ -106,7 +106,7 @@ const FilterMenu = memo(({ toggleShowFilter }: Props) => {
             </div>
             <button
               onClick={handleSelectUnselect}
-              className="flex items-center py-0 pr-0 pl-4 ml-4 text-left bg-white rounded border border-gray-200 shadow transition cursor-pointer dark:bg-black hover:bg-gray-50"
+              className="flex col-span-8 col-start-6 items-center py-0 pr-0 pl-4 ml-4 text-lg text-left bg-white shadow-sm transition cursor-pointer dark:bg-black"
             >
               {selectedCount === 0 ? "Select All" : "Unselect All"}
               <span className="ml-2 font-medium">
@@ -115,20 +115,20 @@ const FilterMenu = memo(({ toggleShowFilter }: Props) => {
             </button>
           </div>
         </div>
-        <div className="grid grid-cols-3 mt-1 h-auto text-sm text-center md:mt-4 md:text-xl">
+        <div className="grid grid-cols-2 mt-2 text-lg text-left md:mt-4 md:text-xl">
           {languages
             .filter((l) => {
               return (
                 l.name.toLowerCase().includes(input.toLowerCase()) && l.show
               );
             })
-            .slice(0, 30)
+            .slice(0, 14)
             .map((l) => {
               return (
                 <button
                   onClick={() => handleSelect(l.name)}
                   key={l.name}
-                  className={`border-none rounded-none cursor-pointer shadow bg-opacity-40 px-0 py-2 h-10 transition ${
+                  className={`cursor-pointer border shadow-sm bg-opacity-30 px-0 py-2 h-10 transition ${
                     l.selected
                       ? l.color + " font-semibold"
                       : "bg-white dark:bg-black"

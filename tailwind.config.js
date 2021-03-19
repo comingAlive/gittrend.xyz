@@ -1,4 +1,6 @@
 const colors = require("tailwindcss/colors");
+const { fontFamily } = require("tailwindcss/defaultTheme");
+
 
 module.exports = {
   purge: ["./pages/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
@@ -16,10 +18,14 @@ module.exports = {
         teal: colors.teal,
         trueGray: colors.trueGray,
       },
+      fontFamily: {
+        sans: ["Inter", ...fontFamily.sans],
+      },
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
+
 };
