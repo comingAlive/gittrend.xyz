@@ -4,8 +4,10 @@ import FilterMenu from "../components/FilterMenu";
 import ReposList from "../components/ReposList";
 import { useLanguages } from "../context/LanguagesContext";
 import useLocalStorage from "../lib/useLocalStorage";
+import useSubmitVisitor from "../hooks/useSubmitVisitor";
 
 const IndexPage = () => {
+  useSubmitVisitor();
   const state = useLanguages();
   const [period, setPeriod] = useLocalStorage("period", "daily");
   const [showFilter, setShowFilter] = useState(false);
