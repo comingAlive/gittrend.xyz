@@ -41,7 +41,7 @@ const ReposList = memo(({ period }: Props) => {
                 className="relative z-0 mt-4 bg-white rounded-sm border border-l-8 border-gray-600 shadow-sm  transition-all transition transform cursor-pointer hover:scale-95 hover:z-50 md:mt-2 dark:bg-black"
                 style={{ borderColor: repo.languageColor }}
               >
-                <Link href={repo.url}>
+                <Link legacyBehavior href={repo.url}>
                   <a
                     rel="noopener noreferrer nofollow"
                     target="_blank"
