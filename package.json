@@ -8,6 +8,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@supabase/supabase-js": "^2.4.1",
     "immer": "^9.0.18",
     "next": "^13.1.5",
     "next-themes": "^0.2.1",
