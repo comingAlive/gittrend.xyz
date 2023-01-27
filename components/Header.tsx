@@ -10,7 +10,7 @@ const Header = memo(() => {
       <div className="relative my-0 mx-auto w-full max-w-4xl h-full text-center inner">
         {/*<Logo />*/}
         <p className="select-none text-2xl font-bold leading-loose text-black cursor-pointer dark:text-white">
-          Git Explore
+          Git Trend
         </p>
         <ColorModeButton />
       </div>

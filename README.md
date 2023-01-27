@@ -2,7 +2,7 @@
 	<img alt="Cybernetically enhanced web apps: Svelte" src="https://gittrend.xyz/images/repo.png">
   </a>
 
-# Git Explore - Trending repos.
+# Git Trend - Trending repos.
 
 A web application for monitoring top trends of GitHub open source. Supports programming language multi-filtering.
 

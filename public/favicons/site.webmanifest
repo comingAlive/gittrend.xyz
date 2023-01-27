@@ -1,5 +1,5 @@
 {
-  "name": "Git Explore - Trending repos.",
+  "name": "Git Trend - Trending repos.",
   "short_name": "gitTrend",
   "description": "A web application for monitoring top trends of GitHub open source. Supports programming language multi-filtering.",
   "background_color": "#000",

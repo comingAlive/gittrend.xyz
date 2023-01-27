@@ -25,7 +25,7 @@ export default function Container(props) {
           content={`https://gittrend.xyz${router.asPath}`}
         />
         <meta property="og:type" content={meta.type} />
-        <meta property="og:site_name" content="Git Explore" />
+        <meta property="og:site_name" content="Git Trend" />
         <meta property="og:description" content={meta.description} />
         <meta property="og:title" content={meta.title} />
         <meta property="og:image" content={meta.image} />
