@@ -6,10 +6,10 @@ export default function Container(props) {
   const { children, ...customMeta } = props;
   const router = useRouter();
   const meta = {
-    title: "GitExplore - Trending repos.",
+    title: "gitTrend - Trending repos.",
     description:
       "A web application for monitoring top trends of GitHub open source. Supports programming language multi-filtering.",
-    image: "https://gitexplore.xyz/images/banner.png",
+    image: "https://gittrend.xyz/images/banner.png",
     type: "website",
     ...customMeta,
   };
@@ -22,7 +22,7 @@ export default function Container(props) {
         <meta content={meta.description} name="description" />
         <meta
           property="og:url"
-          content={`https://gitexplore.xyz${router.asPath}`}
+          content={`https://gittrend.xyz${router.asPath}`}
         />
         <meta property="og:type" content={meta.type} />
         <meta property="og:site_name" content="Git Explore" />
