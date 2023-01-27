@@ -8,7 +8,7 @@ const Footer = () => {
           <Link legacyBehavior href={"https://t.me/aiwon"}>
             <a className="text-blue-600 dark:text-blue-400">@aiwon</a>
           </Link>
-          .
+
         </div>
       </div>
     </footer>
