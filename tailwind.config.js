@@ -3,20 +3,20 @@ const { fontFamily } = require("tailwindcss/defaultTheme");
 
 
 module.exports = {
-  purge: ["./pages/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
+  content: ["./pages/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
   darkMode: "class", // or 'media' or 'class'
   theme: {
     extend: {
       colors: {
         amber: colors.amber,
-        blueGray: colors.blueGray,
+        slate: colors.slate,
         cyan: colors.cyan,
-        lightBlue: colors.lightBlue,
+        sky: colors.sky,
         lime: colors.lime,
         orange: colors.orange,
         rose: colors.rose,
         teal: colors.teal,
-        trueGray: colors.trueGray,
+        neutral: colors.neutral,
       },
       fontFamily: {
         sans: ["Inter", ...fontFamily.sans],

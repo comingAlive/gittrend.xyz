@@ -20,7 +20,7 @@ const IndexPage = () => {
 
   return (
     <Container>
-      {/*{false && <div className="bg-gray-400 bg-gray-500 bg-red-900 bg-orange-300 bg-orange-400 bg-orange-600 bg-amber-300 bg-yellow-700 bg-lime-400 bg-lime-800 bg-green-600 bg-teal-500 bg-cyan-500 bg-cyan-600 bg-cyan-700 bg-blue-500 bg-blue-900 bg-purple-500 bg-pink-500 bg-rose-700 bg-lightBlue-500 bg-blueGray-700 bg-blueGray-800 bg-blueGray-500 bg-blueGray-600 bg-trueGray-600"/>}*/}
+      {/*{false && <div className="bg-gray-400 bg-gray-500 bg-red-900 bg-orange-300 bg-orange-400 bg-orange-600 bg-amber-300 bg-yellow-700 bg-lime-400 bg-lime-800 bg-green-600 bg-teal-500 bg-cyan-500 bg-cyan-600 bg-cyan-700 bg-blue-500 bg-blue-900 bg-purple-500 bg-pink-500 bg-rose-700 bg-sky-500 bg-slate-700 bg-slate-800 bg-slate-500 bg-slate-600 bg-neutral-600"/>}*/}
       <div className="w-full">
         <button
           onClick={toggleShowFilter}
